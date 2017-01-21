@@ -9,6 +9,8 @@ import IndexPage from './components/pages/IndexPage';
 import ErrorPage from './components/pages/ErrorPage';
 import reducers from './reducers';
 
+import 'bases/reset';
+
 const store = createStore(
   combineReducers({
     reducers,
