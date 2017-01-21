@@ -9,6 +9,23 @@ if (process.env.NODE_ENV == 'production') {
 const srcDir = '/src';
 const distDir = '/dist';
 
+const plugins =  [
+  new webpack.DefinePlugin({
+    'process.env': {
+      'NODE_ENV': JSON.stringify(environment)
+    }
+  })
+];
+
+
+if (environment == 'production') {
+  plugins.push(new webpack.optimize.UglifyJsPlugin({
+    compress: {
+      warnings: true
+    }
+  }));
+}
+
 let configs = {
   devtool: 'eval-source-map',
   entry: {
@@ -80,18 +97,7 @@ let configs = {
   externals: {
     'Env': JSON.stringify(require('./.env.' + environment + '.json'))
   },
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify(environment)
-      }
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: true
-      }
-    })
-  ]
+  plugins: plugins
 };
 
 if (environment == 'development') {
