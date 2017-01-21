@@ -3,7 +3,7 @@ import React from 'react';
 import '_layout/_layout-header.scss';
 import '_module/_header.scss';
 
-class Header extends React.Component {
+class DefaultHeader extends React.Component {
   render() {
     return (
       <header className="header">
@@ -13,4 +13,4 @@ class Header extends React.Component {
   }
 }
 
-export default Header;
+export default DefaultHeader;

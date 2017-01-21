@@ -1,6 +1,6 @@
 import React from 'react';
-import Header from './Header';
-import Footer from './Footer';
+import Header from 'components/elements/DefaultHeader';
+import Footer from 'components/elements/DefaultFooter';
 import GoogleTagManager from '../GoogleTagManager';
 import Env from 'Env';
 
