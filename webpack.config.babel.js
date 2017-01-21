@@ -48,7 +48,6 @@ let configs = {
     ]
   },
   module: {
-    preLoaders: [],
     loaders: [
       {
         test: /\.(png|woff|woff2|eot|ttf|svg)$/,
@@ -82,9 +81,6 @@ let configs = {
       }
     ]
   },
-  eslint: {
-    configFile: './.eslintrc'
-  },
   cssLoader: {
     sourceMap: true
   },
@@ -99,13 +95,5 @@ let configs = {
   },
   plugins: plugins
 };
-
-if (environment == 'development') {
-  configs['module']['preLoaders'].push({
-    test: /\.js$/,
-    exclude: /node_modules/,
-    loader: "eslint"
-  });
-}
 
 export default configs;
