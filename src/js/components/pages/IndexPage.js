@@ -3,6 +3,11 @@ import DocumentMeta from 'react-document-meta';
 import Env from 'Env';
 
 class IndexPage extends React.Component {
+
+  getText = () => {
+    return 'Index';
+  }
+
   render() {
     const meta = {
       title: 'Sample Title',
@@ -19,7 +24,7 @@ class IndexPage extends React.Component {
     return (
       <div>
         <DocumentMeta {...meta} />
-        Index
+        { this.getText() }
       </div>
     );
   }
