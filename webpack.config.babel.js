@@ -11,6 +11,8 @@ const distDir = '/dist';
 
 let devtool = '#cheap-source-map';
 let cache = false;
+let cssLoader = "css?importLoaders=1&modules";
+
 const plugins =  [
   new webpack.DefinePlugin({
     'process.env': {
@@ -31,6 +33,7 @@ if (environment == 'production') {
 } else {
   devtool = 'inline-source-map';
   cache = true;
+  cssLoader += "&sourceMap&localIdentName=[name]--[local]--[hash:base64]";
 }
 
 let configs = {
@@ -48,11 +51,11 @@ let configs = {
     extensions: [
       '',
       '.js',
-      '.scss'
+      '.css'
     ],
     root: [
       path.join(__dirname, srcDir + '/js'),
-      path.join(__dirname, srcDir + '/sass')
+      path.join(__dirname, srcDir + '/css')
     ]
   },
   module: {
@@ -77,26 +80,10 @@ let configs = {
         test: /\.css$/,
         loaders: [
           'style',
-          'css'
-        ]
-      },
-      {
-        test: /\.scss$/,
-        loaders: [
-          "style",
-          "css",
-          "sass"
+          cssLoader,
+          'postcss'
         ]
       }
-    ]
-  },
-  cssLoader: {
-    sourceMap: true
-  },
-  sassLoader: {
-    sourceMap: true,
-    includePaths: [
-      path.resolve(__dirname, srcDir + "/sass")
     ]
   },
   externals: {
