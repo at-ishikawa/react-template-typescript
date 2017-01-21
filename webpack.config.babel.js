@@ -9,6 +9,8 @@ if (process.env.NODE_ENV == 'production') {
 const srcDir = '/src';
 const distDir = '/dist';
 
+let devtool = '#cheap-source-map';
+let cache = false;
 const plugins =  [
   new webpack.DefinePlugin({
     'process.env': {
@@ -20,14 +22,20 @@ const plugins =  [
 
 if (environment == 'production') {
   plugins.push(new webpack.optimize.UglifyJsPlugin({
+    sourceMap: false,
+    comments: false,
     compress: {
       warnings: true
     }
   }));
+} else {
+  devtool = 'inline-source-map';
+  cache = true;
 }
 
 let configs = {
-  devtool: 'eval-source-map',
+  devtool: devtool,
+  cache: cache,
   entry: {
     application: path.join(__dirname, srcDir + '/js/application.js')
   },
