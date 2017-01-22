@@ -1,5 +1,11 @@
 {
   "private": true,
+  "scripts": {
+    "setup:development": "yarn install && npm run build",
+    "build": "webpack",
+    "watch": "webpack --watch",
+    "server": "browser-sync --config bs-config.js start"
+  },
   "dependencies": {
     "autoprefixer": "^6.6.1",
     "babel-core": "^6.13.2",
