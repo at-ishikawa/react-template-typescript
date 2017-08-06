@@ -14,7 +14,7 @@ import 'bases/reset';
 
 const store = createStore(
   combineReducers({
-    reducers,
+    ...reducers,
     routing: routerReducer
   })
 );

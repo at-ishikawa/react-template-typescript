@@ -1,7 +1,18 @@
 import React from 'react';
 import DocumentMeta from 'react-document-meta';
 import Env from 'Env';
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+import * as IndexActions from 'actions/index';
 
+@connect(
+  state => ({
+    counter: state.index.counter
+  }),
+  dispatch => ({
+    ...bindActionCreators(IndexActions, dispatch)
+  })
+)
 class IndexPage extends React.Component {
 
   getText = () => {
@@ -24,7 +35,13 @@ class IndexPage extends React.Component {
     return (
       <div>
         <DocumentMeta {...meta} />
-        { this.getText() }
+        Page: { this.getText() }
+        <br />
+        Counter: { this.props.counter }
+        <br />
+        <button onClick={ this.props.increment }>Increment</button>
+        <br />
+        <button onClick={ this.props.decrement }>Decrement</button>
       </div>
     );
   }

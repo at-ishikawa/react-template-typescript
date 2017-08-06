@@ -1,12 +1,18 @@
-import { combineReducers } from 'redux';
+import {handleActions} from "redux-actions";
 
-const reducer = (state = 'INIT', action) => {
-  switch (action) {
-  default:
-    return state;
-  }
-};
-
-export default combineReducers({
-  reducer
+const index = handleActions({
+  INCREMENT: (state, { payload: amount }) => ({
+    ...state,
+    counter: state.counter + amount
+  }),
+  DECREMENT: (state, { payload: amount }) => ({
+    ...state,
+    counter: state.counter + amount
+  })
+}, {
+  counter: 0
 });
+
+export default {
+  index
+};
