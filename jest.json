@@ -1,0 +1,15 @@
+{
+  "verbose": true,
+  "moduleNameMapper": {
+    "^Env$": "<rootDir>/tests/mocks/env.js",
+    "\\.(css)$": "identity-obj-proxy"
+  },
+  "moduleDirectories": [
+    "node_modules",
+    "src/js"
+  ],
+  "roots": [
+    "<rootDir>/tests",
+    "<rootDir>/src/js"
+  ]
+}

@@ -4,7 +4,9 @@
     "setup:development": "yarn install && npm run build",
     "build": "webpack",
     "watch": "webpack --watch",
-    "server": "browser-sync --config bs-config.js start"
+    "server": "browser-sync --config bs-config.js start",
+    "test": "jest -c jest.json",
+    "test:watch": "npm run test -- --watch"
   },
   "dependencies": {
     "autoprefixer": "^7.1.2",
@@ -37,6 +39,8 @@
   "devDependencies": {
     "browser-sync": "^2.14.0",
     "connect-history-api-fallback": "^1.3.0",
-    "eslint": "^4.4.0"
+    "eslint": "^4.4.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^20.0.4"
   }
 }
