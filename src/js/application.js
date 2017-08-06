@@ -1,3 +1,4 @@
+// @flow
 import ReactDOM from 'react-dom';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
@@ -10,11 +11,11 @@ import IndexPage from './components/pages/IndexPage';
 import ErrorPage from './components/pages/ErrorPage';
 import reducers from './reducers';
 
-import 'bases/reset';
+import 'bases/reset.css';
 
 const store = createStore(
   combineReducers({
-    ...reducers,
+      ...reducers,
     routing: routerReducer
   })
 );

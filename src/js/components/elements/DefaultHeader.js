@@ -1,6 +1,7 @@
+// @flow
 import React from 'react';
 
-import style from 'modules/header';
+import style from 'modules/header.css';
 
 class DefaultHeader extends React.Component {
   render() {

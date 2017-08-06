@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import DocumentMeta from 'react-document-meta';
 import Env from 'Env';

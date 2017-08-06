@@ -1,6 +1,7 @@
+// @flow
 import React from 'react';
 
-import style from 'modules/footer';
+import style from 'modules/footer.css';
 
 class DefaultFooter extends React.Component {
   render() {
