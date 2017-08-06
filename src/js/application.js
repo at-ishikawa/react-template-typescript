@@ -1,8 +1,9 @@
 import ReactDOM from 'react-dom';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import { Router, Route } from 'react-router';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
+import { createBrowserHistory } from 'history';
 
 import Container from './components/layouts/DefaultContainer';
 import IndexPage from './components/pages/IndexPage';
@@ -18,15 +19,16 @@ const store = createStore(
   })
 );
 
+const browserHistory = createBrowserHistory();
 const history = syncHistoryWithStore(browserHistory, store);
 
 ReactDOM.render((
   <Provider store={ store }>
     <Router history={ history }>
-      <Route path="/" component={ Container }>
-        <IndexRoute component={ IndexPage } />
-        <Route path="*" component={ ErrorPage } />
-      </Route>
+      <Container>
+        <Route exact path="/" component={ IndexPage } />
+        <Route component={ ErrorPage } />
+      </Container>
     </Router>
   </Provider>
 ), document.getElementById("react"));

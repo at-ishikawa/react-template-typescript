@@ -11,7 +11,7 @@ const distDir = '/dist';
 
 let devtool = '#cheap-source-map';
 let cache = false;
-let cssLoader = "css?importLoaders=1&modules";
+let cssLoader = "css-loader?importLoaders=1&modules";
 
 const plugins =  [
   new webpack.DefinePlugin({
@@ -49,11 +49,11 @@ let configs = {
   },
   resolve: {
     extensions: [
-      '',
       '.js',
       '.css'
     ],
-    root: [
+    modules: [
+      "node_modules",
       path.join(__dirname, srcDir + '/js'),
       path.join(__dirname, srcDir + '/css')
     ]
@@ -62,12 +62,12 @@ let configs = {
     loaders: [
       {
         test: /\.(png|woff|woff2|eot|ttf|svg)$/,
-        loader: 'file'
+        loader: 'file-loader'
       },
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: "babel",
+        loader: "babel-loader",
         query: {
           presets: [
             "react",
@@ -79,9 +79,9 @@ let configs = {
       {
         test: /\.css$/,
         loaders: [
-          'style',
+          'style-loader',
           cssLoader,
-          'postcss'
+          'postcss-loader'
         ]
       }
     ]
