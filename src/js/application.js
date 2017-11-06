@@ -2,9 +2,12 @@
 import ReactDOM from 'react-dom';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
-import { Router, Route } from 'react-router';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from 'react-router-dom';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
-import { createBrowserHistory } from 'history';
 
 import Container from './components/layouts/DefaultContainer';
 import IndexPage from './components/pages/IndexPage';
@@ -20,15 +23,14 @@ const store = createStore(
   })
 );
 
-const browserHistory = createBrowserHistory();
-const history = syncHistoryWithStore(browserHistory, store);
-
 ReactDOM.render((
   <Provider store={ store }>
-    <Router history={ history }>
+    <Router>
       <Container>
-        <Route exact path="/" component={ IndexPage } />
-        <Route component={ ErrorPage } />
+        <Switch>
+          <Route exact path="/" component={ IndexPage } />
+          <Route component={ ErrorPage } />
+        </Switch>
       </Container>
     </Router>
   </Provider>
