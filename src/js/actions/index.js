@@ -5,6 +5,6 @@ export const {
   increment,
   decrement
 } = createActions({
-  INCREMENT: (amount: integer) => (1),
-  DECREMENT: (amount: integer) => (-1)
+  INCREMENT: (amount: number) => (amount),
+  DECREMENT: (amount: number) => (-amount)
 });

@@ -7,7 +7,7 @@ import {
   Route,
   Switch
 } from 'react-router-dom';
-import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
+import { routerReducer } from 'react-router-redux';
 
 import Container from './components/layouts/DefaultContainer';
 import IndexPage from './components/pages/IndexPage';
@@ -18,7 +18,7 @@ import 'bases/reset.css';
 
 const store = createStore(
   combineReducers({
-      ...reducers,
+    ...reducers,
     routing: routerReducer
   })
 );
