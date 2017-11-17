@@ -7,8 +7,11 @@
     "server": "browser-sync --config bs-config.js start",
     "test": "jest -c jest.json",
     "test:watch": "npm run test -- --watch",
+    "lint": "npm run lint:js && npm run lint:css",
+    "lint:js": "eslint --fix 'src/js/**/*.js'",
     "lint:css": "stylelint --fix 'src/css/**/*.css'",
-    "flow": "flow check src"
+    "flow": "flow check src",
+    "precommit": "lint-staged"
   },
   "dependencies": {
     "autoprefixer": "^7.1.6",
@@ -40,14 +43,18 @@
     "webpack": "^3.8.1"
   },
   "devDependencies": {
+    "babel-eslint": "^8.0.2",
     "browser-sync": "^2.14.0",
     "connect-history-api-fallback": "^1.4.0",
     "empty": "^0.10.1",
     "eslint": "^4.10.0",
+    "eslint-plugin-react": "^7.4.0",
     "flow-bin": "^0.52.0",
     "flow-typed": "^2.2.3",
+    "husky": "^0.14.3",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^20.0.4",
+    "lint-staged": "^5.0.0",
     "stylelint": "^8.2.0",
     "stylelint-config-recommended": "^1.0.0"
   }
