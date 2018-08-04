@@ -31,11 +31,11 @@ start:
 
 .PHONY: test
 test:
-	$(JEST) -c jest.json
+	$(JEST)
 
 .PHONY: test-watch
 test-watch:
-	$(JEST) -c jest.json --watch
+	$(JEST) --watch
 
 .PHONY: lint
 lint:
