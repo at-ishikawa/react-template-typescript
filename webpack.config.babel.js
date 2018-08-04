@@ -1,8 +1,10 @@
 import path from 'path';
 import webpack from 'webpack';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
-var environment = 'development';
-if (process.env.NODE_ENV == 'production') {
+let environment = 'development';
+if (process.env.NODE_ENV === 'production') {
   environment = 'production';
 }
 
@@ -22,7 +24,7 @@ const plugins =  [
 ];
 
 
-if (environment == 'production') {
+if (environment === 'production') {
   plugins.push(new webpack.optimize.UglifyJsPlugin({
     sourceMap: false,
     comments: false,
@@ -35,6 +37,9 @@ if (environment == 'production') {
   cache = true;
   cssLoader += "&sourceMap&localIdentName=[name]--[local]--[hash:base64]";
 }
+
+plugins.push(new HtmlWebpackPlugin());
+plugins.push(new ExtractTextPlugin("[name]--[contenthash:base64].css"));
 
 let configs = {
   devtool: devtool,
@@ -73,11 +78,13 @@ let configs = {
       },
       {
         test: /\.css$/,
-        loaders: [
-          'style-loader',
-          cssLoader,
-          'postcss-loader'
-        ]
+        loaders: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            cssLoader,
+            'postcss-loader'
+          ],
+        }),
       }
     ]
   },
