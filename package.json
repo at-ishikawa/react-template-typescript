@@ -1,18 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "setup:development": "yarn install && npm run build",
-    "build": "webpack-cli --mode production",
-    "build:development": "webpack-cli --mode development",
-    "watch": "webpack-cli --watch --mode development",
-    "server": "browser-sync --config bs-config.js start",
-    "test": "jest -c jest.json",
-    "test:watch": "npm run test -- --watch",
-    "lint": "npm run lint:js && npm run lint:css",
-    "lint:js": "eslint --fix 'src/js/**/*.js'",
-    "lint:css": "stylelint --fix 'src/css/**/*.css'",
-    "flow": "flow check src",
-    "precommit": "lint-staged && npm run flow"
+    "test": "make test",
+    "precommit": "make precommit"
   },
   "dependencies": {
     "autoprefixer": "^9.1.0",
