@@ -5,7 +5,11 @@ import Footer from 'components/elements/DefaultFooter';
 
 import style from 'layouts/container.css';
 
-class Container extends React.Component {
+type Props = {
+  children: any
+};
+
+class Container extends React.Component<Props> {
   render() {
     return (
       <div className={ style.container }>

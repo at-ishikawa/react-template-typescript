@@ -1,4 +1,4 @@
-// @flow
+import 'react';
 import ReactDOM from 'react-dom';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
@@ -23,15 +23,18 @@ const store = createStore(
   })
 );
 
-ReactDOM.render((
-  <Provider store={ store }>
-    <Router>
-      <Container>
-        <Switch>
-          <Route exact path="/" component={ IndexPage } />
-          <Route component={ ErrorPage } />
-        </Switch>
-      </Container>
-    </Router>
-  </Provider>
-), document.getElementById("react"));
+const root = document.getElementById("react");
+if (root !== null) {
+  ReactDOM.render((
+    <Provider store={store}>
+      <Router>
+        <Container>
+          <Switch>
+            <Route exact path="/" component={IndexPage}/>
+            <Route component={ErrorPage}/>
+          </Switch>
+        </Container>
+      </Router>
+    </Provider>
+  ), root);
+}

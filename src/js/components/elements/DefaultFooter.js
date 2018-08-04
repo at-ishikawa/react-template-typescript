@@ -3,7 +3,9 @@ import React from 'react';
 
 import style from 'modules/footer.css';
 
-class DefaultFooter extends React.Component {
+type Props = {};
+
+class DefaultFooter extends React.Component<Props> {
   render() {
     return (
       <footer className={ style.footer }>
