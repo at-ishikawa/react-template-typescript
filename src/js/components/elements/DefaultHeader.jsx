@@ -1,8 +1,8 @@
 // @flow
 import React from "react";
 
-import style from "modules/header.css";
+import "modules/header.css";
 
-const DefaultHeader = () => <header className={style.header}>Header</header>;
+const DefaultHeader = () => <header className="header">Header</header>;
 
 export default DefaultHeader;

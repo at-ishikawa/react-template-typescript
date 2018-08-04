@@ -1,8 +1,8 @@
 // @flow
 import React from "react";
 
-import style from "modules/footer.css";
+import "modules/footer.css";
 
-const DefaultFooter = () => <footer className={style.footer}>Footer</footer>;
+const DefaultFooter = () => <footer className="footer">Footer</footer>;
 
 export default DefaultFooter;

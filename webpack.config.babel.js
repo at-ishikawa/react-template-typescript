@@ -103,7 +103,12 @@ let configs = {
           fallback: 'style-loader',
           use: [
             cssLoader,
-            'postcss-loader'
+            {
+              loader: 'postcss-loader',
+              options: {
+                sourceMap: true
+              }
+            }
           ],
         }),
       }
