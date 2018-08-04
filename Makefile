@@ -2,6 +2,7 @@ WEBPACK=yarn webpack-cli
 BROWSER_SYNC=yarn browser-sync
 JEST=yarn jest
 ESLINT=yarn eslint
+PRETTIER=yarn prettier
 STYLELINT=yarn stylelint
 FLOW=yarn flow
 LINT_STAGED=yarn lint-staged
@@ -41,6 +42,10 @@ test-watch:
 lint:
 	$(ESLINT) --fix 'src/js/**/*.js' 'src/js/**/*.jsx'
 	$(STYLELINT) --fix 'src/css/**/*.css'
+
+.PHONY: prettier
+prettier:
+	$(PRETTIER) --write src/js/**/*.{js,jsx}
 
 .PHONY: flow
 flow:
