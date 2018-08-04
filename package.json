@@ -1,18 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "setup:development": "yarn install && npm run build",
-    "build": "webpack-cli --mode production",
-    "build:development": "webpack-cli --mode development",
-    "watch": "webpack-cli --watch --mode development",
-    "server": "browser-sync --config bs-config.js start",
-    "test": "jest -c jest.json",
-    "test:watch": "npm run test -- --watch",
-    "lint": "npm run lint:js && npm run lint:css",
-    "lint:js": "eslint --fix 'src/js/**/*.js'",
-    "lint:css": "stylelint --fix 'src/css/**/*.css'",
-    "flow": "flow check src",
-    "precommit": "lint-staged && npm run flow"
+    "test": "make test",
+    "precommit": "make precommit"
   },
   "dependencies": {
     "autoprefixer": "^9.1.0",
@@ -47,14 +37,20 @@
     "browser-sync": "^2.14.0",
     "connect-history-api-fallback": "^1.4.0",
     "empty": "^0.10.1",
-    "eslint": "^5.3.0",
-    "eslint-plugin-react": "^7.4.0",
+    "eslint": "4",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-import-resolver-webpack": "^0.10.1",
+    "eslint-plugin-import": "2",
+    "eslint-plugin-jsx-a11y": "6",
+    "eslint-plugin-react": "7",
     "flow-bin": "^0.78.0",
     "flow-typed": "^2.2.3",
     "husky": "^0.14.3",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^23.4.2",
     "lint-staged": "^7.2.0",
+    "prettier": "^1.14.0",
     "stylelint": "^9.4.0",
     "stylelint-config-recommended": "^2.1.0",
     "webpack-cli": "^3.1.0"

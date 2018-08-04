@@ -1,4 +1,4 @@
-{
+module.exports = {
   "verbose": true,
   "testURL": "http://localhost/",
   "moduleNameMapper": {
@@ -13,4 +13,4 @@
     "<rootDir>/tests",
     "<rootDir>/src/js"
   ]
-}
+};
