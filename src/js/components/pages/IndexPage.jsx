@@ -2,8 +2,8 @@
 import React from 'react';
 import DocumentMeta from 'react-document-meta';
 import Env from 'Env';
-import {connect} from "react-redux";
-import {bindActionCreators} from "redux";
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import * as IndexActions from 'actions/index';
 
 type Props = {
@@ -15,41 +15,53 @@ type Props = {
 
 @connect(
   state => ({
-    counter: state.index.counter
+    counter: state.index.counter,
   }),
   dispatch => ({
-    ...bindActionCreators(IndexActions, dispatch)
-  })
+    ...bindActionCreators(IndexActions, dispatch),
+  }),
 )
 class IndexPage extends React.Component<Props> {
-
-  getText = () => {
-    return 'Index';
-  }
+  getText = () => 'Index';
 
   render() {
+    const {
+      counter,
+      location,
+      increment,
+      decrement,
+    } = this.props;
+
     const meta = {
       title: 'Sample Title',
       description: 'Sample Description',
-      canonical: Env.appUrl + this.props.location.pathname,
+      canonical: Env.appUrl + location.pathname,
       meta: {
         charset: 'utf-8',
         name: {
-          keywords: 'sample'
-        }
-      }
+          keywords: 'sample',
+        },
+      },
     };
 
     return (
       <div>
         <DocumentMeta {...meta} />
-        Page: { this.getText() }
+        Page:
+        {' '}
+        { this.getText() }
         <br />
-        Counter: { this.props.counter }
+        Counter:
+        {' '}
+        { counter }
         <br />
-        <button onClick={ this.props.increment }>Increment</button>
+        <button type="button" onClick={increment}>
+          Increment
+        </button>
         <br />
-        <button onClick={ this.props.decrement }>Decrement</button>
+        <button type="button" onClick={decrement}>
+          Decrement
+        </button>
       </div>
     );
   }

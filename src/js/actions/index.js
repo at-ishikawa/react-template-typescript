@@ -3,8 +3,8 @@ import { createActions } from 'redux-actions';
 
 export const {
   increment,
-  decrement
+  decrement,
 } = createActions({
   INCREMENT: null,
-  DECREMENT: null
+  DECREMENT: null,
 });

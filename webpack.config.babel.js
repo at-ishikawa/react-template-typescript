@@ -40,7 +40,7 @@ let configs = {
   devtool: devtool,
   cache: cache,
   entry: {
-    application: path.join(__dirname, srcDir + '/js/application.js')
+    application: path.join(__dirname, srcDir + '/js/application.jsx')
   },
   output: {
     path: path.join(__dirname, distDir + '/js'),
@@ -50,11 +50,13 @@ let configs = {
   resolve: {
     extensions: [
       '.js',
+      '.jsx',
       '.css'
     ],
     modules: [
       "node_modules",
       path.join(__dirname, srcDir + '/js'),
+      path.join(__dirname, srcDir + '/jsx'),
       path.join(__dirname, srcDir + '/css')
     ]
   },
@@ -65,7 +67,7 @@ let configs = {
         loader: 'file-loader'
       },
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: "babel-loader"
       },

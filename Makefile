@@ -39,7 +39,7 @@ test-watch:
 
 .PHONY: lint
 lint:
-	$(ESLINT) --fix 'src/js/**/*.js'
+	$(ESLINT) --fix 'src/js/**/*.js' 'src/js/**/*.jsx'
 	$(STYLELINT) --fix 'src/css/**/*.css'
 
 .PHONY: flow
