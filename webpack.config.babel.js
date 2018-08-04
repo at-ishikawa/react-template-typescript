@@ -59,7 +59,7 @@ let configs = {
     ]
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.(png|woff|woff2|eot|ttf|svg)$/,
         loader: 'file-loader'

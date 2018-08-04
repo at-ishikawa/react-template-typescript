@@ -3,7 +3,9 @@ import React from 'react';
 
 import style from 'modules/header.css';
 
-class DefaultHeader extends React.Component {
+type Props = {};
+
+class DefaultHeader extends React.Component<Props> {
   render() {
     return (
       <header className={ style.header }>

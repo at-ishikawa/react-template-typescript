@@ -6,6 +6,13 @@ import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import * as IndexActions from 'actions/index';
 
+type Props = {
+  counter: number,
+  location: Object,
+  increment: () => void,
+  decrement: () => void
+};
+
 @connect(
   state => ({
     counter: state.index.counter
@@ -14,7 +21,7 @@ import * as IndexActions from 'actions/index';
     ...bindActionCreators(IndexActions, dispatch)
   })
 )
-class IndexPage extends React.Component {
+class IndexPage extends React.Component<Props> {
 
   getText = () => {
     return 'Index';

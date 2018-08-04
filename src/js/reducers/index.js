@@ -2,13 +2,13 @@
 import {handleActions} from "redux-actions";
 
 const index = handleActions({
-  INCREMENT: (state, { payload: amount }) => ({
+  INCREMENT: (state) => ({
     ...state,
-    counter: state.counter + amount
+    counter: state.counter + 1
   }),
-  DECREMENT: (state, { payload: amount }) => ({
+  DECREMENT: (state) => ({
     ...state,
-    counter: state.counter + amount
+    counter: state.counter - 1
   })
 }, {
   counter: 0

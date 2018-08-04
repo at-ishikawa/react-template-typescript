@@ -2,16 +2,17 @@
 import React from 'react';
 import Header from 'components/elements/DefaultHeader';
 import Footer from 'components/elements/DefaultFooter';
-import GoogleTagManager from '../GoogleTagManager';
-import Env from 'Env';
 
 import style from 'layouts/container.css';
 
-class Container extends React.Component {
+type Props = {
+  children: any
+};
+
+class Container extends React.Component<Props> {
   render() {
     return (
       <div className={ style.container }>
-        <GoogleTagManager gtmId={Env.gtmId} />
         <Header />
         <main className={ style.main }>
           {this.props.children}
