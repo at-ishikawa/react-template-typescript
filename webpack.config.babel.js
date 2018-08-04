@@ -13,7 +13,13 @@ const distDir = '/dist';
 
 let devtool = '#cheap-source-map';
 let cache = false;
-let cssLoader = "css-loader?importLoaders=1&modules";
+let cssLoader = {
+  loader: "css-loader",
+  options: {
+    importLoaders: 1,
+    minimize: true
+  }
+};
 
 const plugins =  [
   new webpack.DefinePlugin({
@@ -35,11 +41,26 @@ if (environment === 'production') {
 } else {
   devtool = 'inline-source-map';
   cache = true;
-  cssLoader += "&sourceMap&localIdentName=[name]--[local]--[hash:base64]";
+  cssLoader.options.sourceMap = true;
 }
 
-plugins.push(new HtmlWebpackPlugin());
-plugins.push(new ExtractTextPlugin("[name]--[contenthash:base64].css"));
+plugins.push(new HtmlWebpackPlugin({
+  template: 'src/html/index.html',
+  hash: true,
+  minify: {
+    removeComments: true,
+    collapseWhitespace: true,
+    removeRedundantAttributes: true,
+    useShortDoctype: true,
+    removeEmptyAttributes: true,
+    removeStyleLinkTypeAttributes: true,
+    keepClosingSlash: true,
+    minifyJS: true,
+    minifyCSS: true,
+    minifyURLs: true,
+  },
+}));
+plugins.push(new ExtractTextPlugin("[name].css"));
 
 let configs = {
   devtool: devtool,
@@ -48,7 +69,7 @@ let configs = {
     application: path.join(__dirname, srcDir + '/js/application.jsx')
   },
   output: {
-    path: path.join(__dirname, distDir + '/js'),
+    path: path.join(__dirname, distDir),
     filename: '[name].js',
     publicPath: '/'
   },
