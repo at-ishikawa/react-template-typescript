@@ -1,6 +1,4 @@
-// @flow
-import React from "react";
-
+import * as React from "react";
 import "../../../css/atoms/button.css";
 
 type Props = {
@@ -8,7 +6,7 @@ type Props = {
   children: any
 };
 
-const Button = ({ onClick, children }: Props = {}) => (
+const Button = ({ onClick, children }: Props) => (
   <button className="button" type="button" onClick={onClick}>
     {children}
   </button>

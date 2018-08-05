@@ -77,6 +77,8 @@ let configs = {
     extensions: [
       '.js',
       '.jsx',
+      '.ts',
+      '.tsx',
       '.css'
     ],
     modules: [
@@ -93,6 +95,11 @@ let configs = {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: "babel-loader"
+      },
+      {
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        loader: "ts-loader"
       },
       {
         test: /\.css$/,
