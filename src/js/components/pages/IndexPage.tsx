@@ -47,7 +47,7 @@ class IndexPage extends React.Component<Props, State> {
         </Helmet>
         Page: {this.getText()}
         <br />
-        Counter: {this.state.counter}
+        Counter: <span className="counter">{this.state.counter}</span>
         <br />
         <Button onClick={this.increment}>Increment</Button>
         <br />
