@@ -1,8 +1,8 @@
 @charset "utf-8";
 
-@import "../bases/color";
+@import "../bases/color.css";
 
-.container {
+.guest-container {
   background-color: var(--backgroundColor);
   display: flex;
   min-height: 100vh;

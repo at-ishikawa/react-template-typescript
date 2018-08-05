@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as IndexActions from "../../actions/index";
 import Button from "../atoms/Button";
-import DefaultContainer from "../layouts/DefaultContainer";
+import GuestContainer from "../layouts/GuestContainer";
 
 type Props = {
   counter: number,
@@ -42,7 +42,7 @@ class IndexPage extends React.Component<Props> {
     };
 
     return (
-      <DefaultContainer>
+      <GuestContainer>
         <DocumentMeta {...meta} />
         Page: {this.getText()}
         <br />
@@ -51,7 +51,7 @@ class IndexPage extends React.Component<Props> {
         <Button onClick={increment}>Increment</Button>
         <br />
         <Button onClick={decrement}>Decrement</Button>
-      </DefaultContainer>
+      </GuestContainer>
     );
   }
 }
