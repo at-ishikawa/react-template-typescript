@@ -1,5 +1,4 @@
-// @flow
-import React from "react";
+import * as React from "react";
 
 import "../../../../css/organisms/footers/guest-footer.css";
 

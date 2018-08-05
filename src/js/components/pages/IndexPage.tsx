@@ -1,5 +1,4 @@
-// @flow
-import React from "react";
+import * as React from "react";
 import DocumentMeta from "react-document-meta";
 import Env from "Env";
 import { connect } from "react-redux";

@@ -1,18 +1,15 @@
-// @flow
-/* eslint no-console: ["error", { allow: ["error"] }] */
-
 const handleError = (
   message: string,
-  url: ?string,
-  line: ?number,
-  column: ?number,
-  error: ?Error
+  url: string | undefined,
+  line: number | undefined,
+  column: number | undefined,
+  error: Error | undefined
 ) => {
   const data: {
     message: string,
-    url: ?string,
-    line: ?number,
-    column: ?number,
+    url: string | undefined,
+    line: number | undefined,
+    column: number | undefined,
     stack?: string
   } = {
     message,

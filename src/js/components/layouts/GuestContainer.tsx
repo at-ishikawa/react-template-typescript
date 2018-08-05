@@ -1,5 +1,4 @@
-// @flow
-import React from "react";
+import * as React from "react";
 import Header from "../organisms/headers/GuestHeader";
 import Footer from "../organisms/footers/GuestFooter";
 

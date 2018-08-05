@@ -1,13 +1,16 @@
-// @flow
 import { handleActions } from "redux-actions";
+
+type State = {
+  counter: number
+};
 
 const index = handleActions(
   {
-    INCREMENT: state => ({
+    INCREMENT: (state: State) => ({
       ...state,
       counter: state.counter + 1
     }),
-    DECREMENT: state => ({
+    DECREMENT: (state: State) => ({
       ...state,
       counter: state.counter - 1
     })

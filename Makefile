@@ -47,11 +47,6 @@ lint:
 prettier:
 	$(PRETTIER) --write src/js/**/*.{js,jsx}
 
-.PHONY: flow
-flow:
-	$(FLOW) check src
-
 .PHONY: precommit
 precommit:
 	$(LINT_STAGED)
-	make flow
