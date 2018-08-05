@@ -8,7 +8,9 @@ import Router from "./routes/Router";
 import reducers from "./reducers";
 
 import "../css/bases/reset.css";
+import handleError from "./errors/ErrorHandler";
 
+window.onerror = handleError;
 const store = createStore(
   combineReducers({
     ...reducers,

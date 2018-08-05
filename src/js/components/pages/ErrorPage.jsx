@@ -1,7 +1,10 @@
 // @flow
-import React from "react";
-import GuestContainer from "../layouts/GuestContainer";
+import BaseError from "../../errors/BaseError";
 
-const ErrorPage = () => <GuestContainer>ErrorPage</GuestContainer>;
+class SampleError extends BaseError {}
+
+const ErrorPage = () => {
+  throw new SampleError("Error page");
+};
 
 export default ErrorPage;
