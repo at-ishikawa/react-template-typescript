@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 
-import "organisms/footer.css";
+import "../../../css/organisms/footer.css";
 
 const DefaultFooter = () => <footer className="footer">Footer</footer>;
 

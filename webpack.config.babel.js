@@ -80,10 +80,7 @@ let configs = {
       '.css'
     ],
     modules: [
-      "node_modules",
-      path.join(__dirname, srcDir + '/js'),
-      path.join(__dirname, srcDir + '/jsx'),
-      path.join(__dirname, srcDir + '/css')
+      "node_modules"
     ]
   },
   module: {

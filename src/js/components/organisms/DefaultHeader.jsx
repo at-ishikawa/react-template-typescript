@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 
-import "organisms/header.css";
+import "../../../css/organisms/header.css";
 
 const DefaultHeader = () => <header className="header">Header</header>;
 

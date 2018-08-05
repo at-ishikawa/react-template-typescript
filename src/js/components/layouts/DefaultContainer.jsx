@@ -1,9 +1,9 @@
 // @flow
 import React from "react";
-import Header from "components/organisms/DefaultHeader";
-import Footer from "components/organisms/DefaultFooter";
+import Header from "../organisms/DefaultHeader";
+import Footer from "../organisms/DefaultFooter";
 
-import "layouts/container.css";
+import "../../../css/layouts/container.css";
 
 type Props = {
   children: any

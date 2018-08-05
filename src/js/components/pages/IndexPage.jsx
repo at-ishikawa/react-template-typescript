@@ -4,8 +4,8 @@ import DocumentMeta from "react-document-meta";
 import Env from "Env";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import * as IndexActions from "actions/index";
-import Button from "components/atoms/Button";
+import * as IndexActions from "../../actions/index";
+import Button from "../atoms/Button";
 
 type Props = {
   counter: number,

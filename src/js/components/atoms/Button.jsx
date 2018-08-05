@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 
-import "atoms/button.css";
+import "../../../css/atoms/button.css";
 
 type Props = {
   onClick: () => void,

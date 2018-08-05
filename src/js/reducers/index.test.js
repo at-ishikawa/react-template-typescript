@@ -1,9 +1,9 @@
 // @flow
-import * as Actions from 'actions/index';
-import reducers from 'reducers/index';
+import * as Actions from "../actions/index";
+import reducers from "./index";
 
-describe('index reducers', () => {
-  it('increment', () => {
+describe("index reducers", () => {
+  it("increment", () => {
     const state = {
       counter: 0
     };
@@ -11,7 +11,7 @@ describe('index reducers', () => {
     expect(actual.counter).toBe(1);
   });
 
-  it('decrement', () => {
+  it("decrement", () => {
     const state = {
       counter: 0
     };

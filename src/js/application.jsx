@@ -10,7 +10,7 @@ import IndexPage from "./components/pages/IndexPage";
 import ErrorPage from "./components/pages/ErrorPage";
 import reducers from "./reducers";
 
-import "bases/reset.css";
+import "../css/bases/reset.css";
 
 const store = createStore(
   combineReducers({
