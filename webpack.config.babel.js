@@ -112,7 +112,10 @@ let configs = {
     ]
   },
   externals: {
-    'Env': JSON.stringify(require('./.env.' + environment + '.json'))
+    'Env': JSON.stringify(require('./.env.' + environment + '.json')),
+    'react': 'React',
+    'react-dom': 'ReactDOM',
+    'react-router': 'ReactRouter'
   },
   plugins: plugins
 };
