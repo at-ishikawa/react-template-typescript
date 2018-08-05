@@ -1,7 +1,7 @@
-import path from 'path';
-import webpack from 'webpack';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
+const path = require('path');
+const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 let environment = 'development';
 if (process.env.NODE_ENV === 'production') {
@@ -66,7 +66,7 @@ let configs = {
   devtool: devtool,
   cache: cache,
   entry: {
-    application: path.join(__dirname, srcDir + '/js/application.jsx')
+    application: path.join(__dirname, srcDir + '/js/application.tsx')
   },
   output: {
     path: path.join(__dirname, distDir),
@@ -77,6 +77,8 @@ let configs = {
     extensions: [
       '.js',
       '.jsx',
+      '.ts',
+      '.tsx',
       '.css'
     ],
     modules: [
@@ -90,9 +92,9 @@ let configs = {
         loader: 'file-loader'
       },
       {
-        test: /\.jsx?$/,
+        test: /\.tsx?$/,
         exclude: /node_modules/,
-        loader: "babel-loader"
+        loader: "ts-loader"
       },
       {
         test: /\.css$/,
@@ -120,4 +122,4 @@ let configs = {
   plugins: plugins
 };
 
-export default configs;
+module.exports = configs;

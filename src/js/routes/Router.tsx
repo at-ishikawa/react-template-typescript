@@ -1,10 +1,9 @@
-// @flow
-import React from "react";
+import * as React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ErrorPage from "../components/pages/ErrorPage";
 import IndexPage from "../components/pages/IndexPage";
 
-const Router = (
+const router = (
   <BrowserRouter>
     <Switch>
       <Route exact path="/" component={IndexPage} />
@@ -13,4 +12,4 @@ const Router = (
   </BrowserRouter>
 );
 
-export default Router;
+export default router;

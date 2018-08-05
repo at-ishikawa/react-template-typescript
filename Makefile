@@ -1,7 +1,7 @@
 WEBPACK=yarn webpack-cli
 BROWSER_SYNC=yarn browser-sync
 JEST=yarn jest
-ESLINT=yarn eslint
+TSLINT=yarn tslint
 PRETTIER=yarn prettier
 STYLELINT=yarn stylelint
 FLOW=yarn flow
@@ -40,18 +40,13 @@ test-watch:
 
 .PHONY: lint
 lint:
-	$(ESLINT) --fix 'src/js/**/*.js' 'src/js/**/*.jsx'
+	$(TSLINT) --fix 'src/js/**/*.ts' 'src/js/**/*.tsx'
 	$(STYLELINT) --fix 'src/css/**/*.css'
 
 .PHONY: prettier
 prettier:
-	$(PRETTIER) --write src/js/**/*.{js,jsx}
-
-.PHONY: flow
-flow:
-	$(FLOW) check src
+	$(PRETTIER) --write src/js/**/*.{ts,tsx}
 
 .PHONY: precommit
 precommit:
 	$(LINT_STAGED)
-	make flow
