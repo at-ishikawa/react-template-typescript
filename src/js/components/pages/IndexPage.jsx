@@ -5,6 +5,7 @@ import Env from "Env";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as IndexActions from "actions/index";
+import Button from "components/atoms/Button";
 
 type Props = {
   counter: number,
@@ -46,13 +47,9 @@ class IndexPage extends React.Component<Props> {
         <br />
         Counter: {counter}
         <br />
-        <button type="button" onClick={increment}>
-          Increment
-        </button>
+        <Button onClick={increment}>Increment</Button>
         <br />
-        <button type="button" onClick={decrement}>
-          Decrement
-        </button>
+        <Button onClick={decrement}>Decrement</Button>
       </div>
     );
   }

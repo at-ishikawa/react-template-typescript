@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
-import Header from "components/elements/DefaultHeader";
-import Footer from "components/elements/DefaultFooter";
+import Header from "components/organisms/DefaultHeader";
+import Footer from "components/organisms/DefaultFooter";
 
 import "layouts/container.css";
 
