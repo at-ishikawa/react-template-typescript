@@ -1,6 +1,7 @@
 // @flow
 import React from "react";
+import DefaultContainer from "../layouts/DefaultContainer";
 
-const ErrorPage = () => <div>ErrorPage</div>;
+const ErrorPage = () => <DefaultContainer>ErrorPage</DefaultContainer>;
 
 export default ErrorPage;

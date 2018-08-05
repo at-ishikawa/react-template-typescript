@@ -5,7 +5,6 @@ import { Provider } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { routerReducer } from "react-router-redux";
 
-import Container from "./components/layouts/DefaultContainer";
 import IndexPage from "./components/pages/IndexPage";
 import ErrorPage from "./components/pages/ErrorPage";
 import reducers from "./reducers";
@@ -24,12 +23,10 @@ if (root !== null) {
   ReactDOM.render(
     <Provider store={store}>
       <Router>
-        <Container>
-          <Switch>
-            <Route exact path="/" component={IndexPage} />
-            <Route component={ErrorPage} />
-          </Switch>
-        </Container>
+        <Switch>
+          <Route exact path="/" component={IndexPage} />
+          <Route component={ErrorPage} />
+        </Switch>
       </Router>
     </Provider>,
     root
