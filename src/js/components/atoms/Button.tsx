@@ -6,9 +6,9 @@ type Props = {
   children: any
 };
 
-const Button = ({ onClick, children }: Props) => (
+const button = ({ onClick, children }: Props) => (
   <button className="button" type="button" onClick={onClick}>
     {children}
   </button>
 );
-export default Button;
+export default button;

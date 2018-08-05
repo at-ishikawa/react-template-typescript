@@ -1,55 +1,51 @@
 import * as React from "react";
-import DocumentMeta from "react-document-meta";
-import Env from "Env";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import * as IndexActions from "../../actions/index";
 import Button from "../atoms/Button";
 import GuestContainer from "../layouts/GuestContainer";
 
 type Props = {
-  counter: number,
-  location: Object,
-  increment: () => void,
-  decrement: () => void
+  location: {
+      pathname: string;
+  },
 };
 
-@connect(
-  state => ({
-    counter: state.index.counter
-  }),
-  dispatch => ({
-    ...bindActionCreators(IndexActions, dispatch)
-  })
-)
-class IndexPage extends React.Component<Props> {
+interface State {
+    counter: number;
+};
+
+class IndexPage extends React.Component<Props, State> {
   getText = () => "Index";
 
-  render() {
-    const { counter, location, increment, decrement } = this.props;
+  constructor(props: any) {
+      super(props);
+      this.state = {
+          counter: 0,
+      };
+  }
 
-    const meta = {
-      title: "Sample Title",
-      description: "Sample Description",
-      canonical: Env.appUrl + location.pathname,
-      meta: {
-        charset: "utf-8",
-        name: {
-          keywords: "sample"
-        }
-      }
-    };
+  increment = () => {
+      this.setState({
+          counter: this.state.counter + 1
+      });
+  }
+
+  decrement = () => {
+      this.setState({
+          counter: this.state.counter - 1
+      });
+  }
+
+  render() {
+    const { location } = this.props;
 
     return (
       <GuestContainer>
-        <DocumentMeta {...meta} />
         Page: {this.getText()}
         <br />
-        Counter: {counter}
+        Counter: {this.state.counter}
         <br />
-        <Button onClick={increment}>Increment</Button>
+        <Button onClick={this.increment}>Increment</Button>
         <br />
-        <Button onClick={decrement}>Decrement</Button>
+        <Button onClick={this.decrement}>Decrement</Button>
       </GuestContainer>
     );
   }

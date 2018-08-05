@@ -6,8 +6,8 @@ class SampleError extends BaseError {
     }
 }
 
-const ErrorPage = () => {
+const errorPage = () => {
   throw new SampleError("Error page");
 };
 
-export default ErrorPage;
+export default errorPage;

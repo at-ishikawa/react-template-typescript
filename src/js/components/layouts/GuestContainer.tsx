@@ -1,6 +1,6 @@
 import * as React from "react";
-import Header from "../organisms/headers/GuestHeader";
-import Footer from "../organisms/footers/GuestFooter";
+import GuestHeader from "../organisms/headers/GuestHeader";
+import GuestFooter from "../organisms/footers/GuestFooter";
 
 import "../../../css/layouts/guest-container.css";
 
@@ -8,12 +8,12 @@ type Props = {
   children: any
 };
 
-const GuestContainer = ({ children }: Props) => (
+const guestContainer = ({ children }: Props) => (
   <div className="guest-container">
-    <Header />
+    <GuestHeader />
     <main className="main">{children}</main>
-    <Footer />
+    <GuestFooter />
   </div>
 );
 
-export default GuestContainer;
+export default guestContainer;
