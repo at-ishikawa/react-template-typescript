@@ -1,6 +1,10 @@
 // @flow
-import React from "react";
+import BaseError from "../../errors/BaseError";
 
-const ErrorPage = () => <div>ErrorPage</div>;
+class SampleError extends BaseError {}
+
+const ErrorPage = () => {
+  throw new SampleError("Error page");
+};
 
 export default ErrorPage;

@@ -6,11 +6,9 @@ module.exports = {
     "\\.(css)$": "identity-obj-proxy"
   },
   "moduleDirectories": [
-    "node_modules",
-    "src/js"
+    "node_modules"
   ],
   "roots": [
-    "<rootDir>/tests",
     "<rootDir>/src/js"
   ]
 };

@@ -1,8 +1,10 @@
 import path from 'path';
 import webpack from 'webpack';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
-var environment = 'development';
-if (process.env.NODE_ENV == 'production') {
+let environment = 'development';
+if (process.env.NODE_ENV === 'production') {
   environment = 'production';
 }
 
@@ -11,7 +13,13 @@ const distDir = '/dist';
 
 let devtool = '#cheap-source-map';
 let cache = false;
-let cssLoader = "css-loader?importLoaders=1&modules";
+let cssLoader = {
+  loader: "css-loader",
+  options: {
+    importLoaders: 1,
+    minimize: true
+  }
+};
 
 const plugins =  [
   new webpack.DefinePlugin({
@@ -22,7 +30,7 @@ const plugins =  [
 ];
 
 
-if (environment == 'production') {
+if (environment === 'production') {
   plugins.push(new webpack.optimize.UglifyJsPlugin({
     sourceMap: false,
     comments: false,
@@ -33,8 +41,26 @@ if (environment == 'production') {
 } else {
   devtool = 'inline-source-map';
   cache = true;
-  cssLoader += "&sourceMap&localIdentName=[name]--[local]--[hash:base64]";
+  cssLoader.options.sourceMap = true;
 }
+
+plugins.push(new HtmlWebpackPlugin({
+  template: 'src/html/index.html',
+  hash: true,
+  minify: {
+    removeComments: true,
+    collapseWhitespace: true,
+    removeRedundantAttributes: true,
+    useShortDoctype: true,
+    removeEmptyAttributes: true,
+    removeStyleLinkTypeAttributes: true,
+    keepClosingSlash: true,
+    minifyJS: true,
+    minifyCSS: true,
+    minifyURLs: true,
+  },
+}));
+plugins.push(new ExtractTextPlugin("[name].css"));
 
 let configs = {
   devtool: devtool,
@@ -43,7 +69,7 @@ let configs = {
     application: path.join(__dirname, srcDir + '/js/application.jsx')
   },
   output: {
-    path: path.join(__dirname, distDir + '/js'),
+    path: path.join(__dirname, distDir),
     filename: '[name].js',
     publicPath: '/'
   },
@@ -54,10 +80,7 @@ let configs = {
       '.css'
     ],
     modules: [
-      "node_modules",
-      path.join(__dirname, srcDir + '/js'),
-      path.join(__dirname, srcDir + '/jsx'),
-      path.join(__dirname, srcDir + '/css')
+      "node_modules"
     ]
   },
   module: {
@@ -73,16 +96,26 @@ let configs = {
       },
       {
         test: /\.css$/,
-        loaders: [
-          'style-loader',
-          cssLoader,
-          'postcss-loader'
-        ]
+        loaders: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            cssLoader,
+            {
+              loader: 'postcss-loader',
+              options: {
+                sourceMap: true
+              }
+            }
+          ],
+        }),
       }
     ]
   },
   externals: {
-    'Env': JSON.stringify(require('./.env.' + environment + '.json'))
+    'Env': JSON.stringify(require('./.env.' + environment + '.json')),
+    'react': 'React',
+    'react-dom': 'ReactDOM',
+    'react-router': 'ReactRouter'
   },
   plugins: plugins
 };

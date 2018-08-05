@@ -2,16 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { createStore, combineReducers } from "redux";
 import { Provider } from "react-redux";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { routerReducer } from "react-router-redux";
 
-import Container from "./components/layouts/DefaultContainer";
-import IndexPage from "./components/pages/IndexPage";
-import ErrorPage from "./components/pages/ErrorPage";
+import Router from "./routes/Router";
 import reducers from "./reducers";
 
-import "bases/reset.css";
+import "../css/bases/reset.css";
+import handleError from "./errors/ErrorHandler";
 
+window.onerror = handleError;
 const store = createStore(
   combineReducers({
     ...reducers,
@@ -21,17 +20,5 @@ const store = createStore(
 
 const root = document.getElementById("react");
 if (root !== null) {
-  ReactDOM.render(
-    <Provider store={store}>
-      <Router>
-        <Container>
-          <Switch>
-            <Route exact path="/" component={IndexPage} />
-            <Route component={ErrorPage} />
-          </Switch>
-        </Container>
-      </Router>
-    </Provider>,
-    root
-  );
+  ReactDOM.render(<Provider store={store}>{Router}</Provider>, root);
 }
