@@ -2,11 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { createStore, combineReducers } from "redux";
 import { Provider } from "react-redux";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { routerReducer } from "react-router-redux";
 
-import IndexPage from "./components/pages/IndexPage";
-import ErrorPage from "./components/pages/ErrorPage";
+import Router from "./routes/Router";
 import reducers from "./reducers";
 
 import "../css/bases/reset.css";
@@ -20,15 +18,5 @@ const store = createStore(
 
 const root = document.getElementById("react");
 if (root !== null) {
-  ReactDOM.render(
-    <Provider store={store}>
-      <Router>
-        <Switch>
-          <Route exact path="/" component={IndexPage} />
-          <Route component={ErrorPage} />
-        </Switch>
-      </Router>
-    </Provider>,
-    root
-  );
+  ReactDOM.render(<Provider store={store}>{Router}</Provider>, root);
 }
