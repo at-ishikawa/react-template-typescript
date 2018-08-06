@@ -1,6 +1,6 @@
 import * as React from "react";
-import Button from "../atoms/Button";
-import GuestContainer from "../layouts/GuestContainer";
+import Button from "../Atoms/Button";
+import GuestContainer from "../Layouts/GuestContainer";
 import Helmet from "react-helmet";
 
 type Props = {

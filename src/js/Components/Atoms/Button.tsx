@@ -2,8 +2,8 @@ import * as React from "react";
 import "../../../css/atoms/button.css";
 
 type Props = {
-  onClick: () => void,
-  children: any
+  onClick: () => void;
+  children: any;
 };
 
 const button = ({ onClick, children }: Props) => (
