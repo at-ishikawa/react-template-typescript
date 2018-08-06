@@ -1,11 +1,11 @@
 import * as React from "react";
-import GuestHeader from "../organisms/headers/GuestHeader";
-import GuestFooter from "../organisms/footers/GuestFooter";
+import GuestHeader from "../Organisms/Headers/GuestHeader";
+import GuestFooter from "../Organisms/Footers/GuestFooter";
 
 import "../../../css/layouts/guest-container.css";
 
 type Props = {
-  children: any
+  children: any;
 };
 
 const guestContainer = ({ children }: Props) => (

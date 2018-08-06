@@ -1,9 +1,9 @@
-import BaseError from "../../errors/BaseError";
+import BaseError from "../../Errors/BaseError";
 
 class SampleError extends BaseError {
-    constructor(message: string) {
-        super(message);
-    }
+  constructor(message: string) {
+    super(message);
+  }
 }
 
 const errorPage = () => {

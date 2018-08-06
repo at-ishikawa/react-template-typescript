@@ -66,7 +66,7 @@ let configs = {
   devtool: devtool,
   cache: cache,
   entry: {
-    application: path.join(__dirname, srcDir + '/js/application.tsx')
+    application: path.join(__dirname, srcDir + '/js/Application.tsx')
   },
   output: {
     path: path.join(__dirname, distDir),
