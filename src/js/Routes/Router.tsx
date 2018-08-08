@@ -1,7 +1,7 @@
 import * as React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import ErrorPage from "../components/pages/ErrorPage";
-import IndexPage from "../components/pages/IndexPage";
+import ErrorPage from "../Components/Pages/ErrorPage";
+import IndexPage from "../Components/Pages/IndexPage";
 
 const router = (
   <BrowserRouter>

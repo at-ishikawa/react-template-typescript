@@ -3,6 +3,8 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
+
 
 let environment = 'development';
 if (process.env.NODE_ENV === 'production') {
@@ -33,7 +35,8 @@ const plugins =  [
   }),
   new ForkTsCheckerWebpackPlugin({
     tslint: true
-  })
+  }),
+  new CaseSensitivePathsPlugin()
 ];
 
 
@@ -102,8 +105,7 @@ let configs = {
         exclude: /node_modules/,
         loader: "ts-loader",
         options: {
-          transpileOnly: true,
-          experimentalWatchApi: true
+          transpileOnly: true
         }
       },
       {
