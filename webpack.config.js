@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 let environment = 'development';
 if (process.env.NODE_ENV === 'production') {
@@ -16,21 +17,41 @@ let cache = false;
 let cssLoader = {
   loader: "css-loader",
   options: {
-    importLoaders: 1,
-    minimize: true
+    importLoaders: 1
   }
 };
 
+const htmlPlugin = new HtmlWebpackPlugin({
+  template: 'src/html/index.html',
+  hash: true,
+});
 const plugins =  [
   new webpack.DefinePlugin({
     'process.env': {
       'NODE_ENV': JSON.stringify(environment)
     }
+  }),
+  new ForkTsCheckerWebpackPlugin({
+    tslint: true
   })
 ];
 
 
 if (environment === 'production') {
+  cssLoader.options.minimize = true;
+
+  htmlPlugin.minify = {
+    removeComments: true,
+    collapseWhitespace: true,
+    removeRedundantAttributes: true,
+    useShortDoctype: true,
+    removeEmptyAttributes: true,
+    removeStyleLinkTypeAttributes: true,
+    keepClosingSlash: true,
+    minifyJS: true,
+    minifyCSS: true,
+    minifyURLs: true
+  };
   plugins.push(new webpack.optimize.UglifyJsPlugin({
     sourceMap: false,
     comments: false,
@@ -44,22 +65,7 @@ if (environment === 'production') {
   cssLoader.options.sourceMap = true;
 }
 
-plugins.push(new HtmlWebpackPlugin({
-  template: 'src/html/index.html',
-  hash: true,
-  minify: {
-    removeComments: true,
-    collapseWhitespace: true,
-    removeRedundantAttributes: true,
-    useShortDoctype: true,
-    removeEmptyAttributes: true,
-    removeStyleLinkTypeAttributes: true,
-    keepClosingSlash: true,
-    minifyJS: true,
-    minifyCSS: true,
-    minifyURLs: true,
-  },
-}));
+plugins.push(htmlPlugin);
 plugins.push(new ExtractTextPlugin("[name].css"));
 
 let configs = {
@@ -94,7 +100,11 @@ let configs = {
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
-        loader: "ts-loader"
+        loader: "ts-loader",
+        options: {
+          transpileOnly: true,
+          experimentalWatchApi: true
+        }
       },
       {
         test: /\.css$/,

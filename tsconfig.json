@@ -5,11 +5,12 @@
     "strict": true,
     "noImplicitAny": true,
     "module": "esnext",
+    "moduleResolution": "node",
     "target": "es5",
     "jsx": "react"
   },
   "include": [
-    "./src/**/*"
+    "./src/js/**/*"
   ],
   "exclude": [
     "node_modules",
