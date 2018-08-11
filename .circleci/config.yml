@@ -23,6 +23,9 @@ jobs:
           name: lint
           command: make lint
       - run:
+          name: build
+          command: make build-development
+      - run:
           name: test
           command: make test
 #      - run:
