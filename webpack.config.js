@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
@@ -19,7 +18,9 @@ let cache = false;
 let cssLoader = {
   loader: "css-loader",
   options: {
-    importLoaders: 1
+    importLoaders: 1,
+    modules: true,
+    camelCase: true
   }
 };
 
@@ -66,10 +67,10 @@ if (environment === 'production') {
   devtool = 'inline-source-map';
   cache = true;
   cssLoader.options.sourceMap = true;
+  cssLoader.options.localIdentName = "[path][name]--[local]--[hash:base64:8]";
 }
 
 plugins.push(htmlPlugin);
-plugins.push(new ExtractTextPlugin("[name].css"));
 
 let configs = {
   devtool: devtool,
@@ -110,18 +111,21 @@ let configs = {
       },
       {
         test: /\.css$/,
-        loaders: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            cssLoader,
-            {
-              loader: 'postcss-loader',
-              options: {
-                sourceMap: true
-              }
+        use: [
+          {
+            loader: 'style-loader',
+            options: {
+              sourceMap: true
             }
-          ],
-        }),
+          },
+          cssLoader,
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: true
+            }
+          }
+        ]
       }
     ]
   },
