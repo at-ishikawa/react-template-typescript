@@ -1,6 +1,6 @@
 import * as React from "react";
 import Button from "../Atoms/Button";
-import GuestContainer from "../Layouts/GuestContainer";
+import GuestContainer from "../Layouts/GuestLayout";
 import Helmet from "react-helmet";
 
 type Props = {
@@ -45,6 +45,7 @@ class IndexPage extends React.Component<Props, State> {
           <meta name="description" content="description" />
           <meta name="keywords" content="react,typescript" />
         </Helmet>
+        {location.pathname}
         Page: {this.getText()}
         <br />
         Counter: <span className="counter">{this.state.counter}</span>

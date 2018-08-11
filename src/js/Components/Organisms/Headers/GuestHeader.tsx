@@ -1,7 +1,9 @@
 import * as React from "react";
 
-import "../../../../css/organisms/headers/guest-header.css";
+import * as styles from "../../../../css/organisms/headers/guest-header.css";
 
-const guestHeader = () => <header className="guest-header">Header</header>;
+const guestHeader = () => (
+  <header className={styles.guestHeader}>Header</header>
+);
 
 export default guestHeader;
