@@ -16,7 +16,7 @@ setup-development:
 
 .PHONY: build
 build:
-	$(WEBPACK) --mode production
+	$(WEBPACK) -p --mode production
 
 .PHONY: build-development
 build-development:
