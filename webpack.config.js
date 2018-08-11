@@ -39,7 +39,6 @@ module.exports = (env, argv) => {
 
   if (isProduction) {
     cssLoader.loader = 'css-loader';
-    cssLoader.options.minimize = true;
 
     htmlPlugin.minify = {
       removeComments: true,
