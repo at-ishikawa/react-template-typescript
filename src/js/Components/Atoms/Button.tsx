@@ -1,5 +1,5 @@
 import * as React from "react";
-import "../../../css/atoms/button.css";
+import * as styles from "../../../css/atoms/button.css";
 
 type Props = {
   onClick: () => void;
@@ -7,7 +7,7 @@ type Props = {
 };
 
 const button = ({ onClick, children }: Props) => (
-  <button className="button" type="button" onClick={onClick}>
+  <button className={styles.button} type="button" onClick={onClick}>
     {children}
   </button>
 );

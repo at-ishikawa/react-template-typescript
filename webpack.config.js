@@ -16,7 +16,6 @@ const distDir = '/dist';
 let devtool = '#cheap-source-map';
 let cache = false;
 let cssLoader = {
-  loader: "css-loader",
   options: {
     importLoaders: 1,
     modules: true,
@@ -42,6 +41,7 @@ const plugins =  [
 
 
 if (environment === 'production') {
+  cssLoader.loader = 'css-loader';
   cssLoader.options.minimize = true;
 
   htmlPlugin.minify = {
@@ -66,8 +66,15 @@ if (environment === 'production') {
 } else {
   devtool = 'inline-source-map';
   cache = true;
+
+  cssLoader.loader = 'typings-for-css-modules-loader';
+  cssLoader.options.namedExport = true;
   cssLoader.options.sourceMap = true;
   cssLoader.options.localIdentName = "[path][name]--[local]--[hash:base64:8]";
+
+  plugins.push(new webpack.WatchIgnorePlugin([
+    /css\.d\.ts$/
+  ]));
 }
 
 plugins.push(htmlPlugin);

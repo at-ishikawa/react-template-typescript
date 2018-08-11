@@ -2,7 +2,7 @@
 
 @import "../bases/color.css";
 
-.guest-container {
+.layout {
   background-color: var(--backgroundColor);
   display: flex;
   min-height: 100vh;

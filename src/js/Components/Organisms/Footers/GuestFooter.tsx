@@ -1,7 +1,9 @@
 import * as React from "react";
 
-import "../../../../css/organisms/footers/guest-footer.css";
+import * as styles from "../../../../css/organisms/footers/guest-footer.css";
 
-const guestFooter = () => <footer className="guest-footer">Footer</footer>;
+const guestFooter = () => (
+  <footer className={styles.guestFooter}>Footer</footer>
+);
 
 export default guestFooter;
