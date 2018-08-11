@@ -1,9 +1,15 @@
 const preset = require('postcss-preset-env');
+const apply = require('postcss-apply');
 const cssnano = require('cssnano');
+const importPlugin = require('postcss-import');
 
 module.exports = {
   plugins: [
-    preset,
+    importPlugin,
+    apply,
+    preset({
+      stage: 0
+    }),
     cssnano
   ]
 };
